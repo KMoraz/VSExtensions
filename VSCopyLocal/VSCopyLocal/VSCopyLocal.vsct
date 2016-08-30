@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+    <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+
+    <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+    <Extern href="stdidcmd.h"/>
+
+    <!--This header contains the command ids for the menus provided by the shell. -->
+    <Extern href="vsshlids.h"/>
+
+
+
+
+    <!--The Commands section is where we the commands, menus and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+    <Commands package="guidVSCopyLocalPkg">
+        <!-- Inside this section we have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+
+
+        <!-- In this section you can define new menu groups. A menu group is a container for 
+         other menus or buttons (commands); from a visual point of view you can see the 
+         group as the part of a menu contained between two lines. The parent of a group 
+         must be a menu. -->
+        <Groups>
+            <Group guid="guidVSPackageTemplateCmdSet" id="MyMenuGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+            </Group>
+
+            <Group guid="guidVSPackageTemplateCmdReferencesSet" id="MyReferencesMenuGroup" priority="0x0601">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_REFERENCEROOT"/>
+            </Group>
+
+            <Group guid="guidVSPackageTemplateCmdSolutionSet" id="MySolutionMenuGroup" priority="0x0602">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+            </Group>
+        </Groups>
+
+        <Buttons>
+            <Button guid="guidVSPackageTemplateCmdSet" id="CmdidProjectCommand" priority="0x0100" type="Button">
+                <Parent guid="guidVSPackageTemplateCmdSet" id="MyMenuGroup" />
+                <Icon guid="guidImages" id="bmpPic1" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>TextChanges</CommandFlag>
+                <Strings>
+                    <CommandName>CmdidProjectCommand</CommandName>
+                    <MenuText>Turn Off Copy Local for this Project</MenuText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidVSPackageTemplateCmdReferencesSet" id="CmdidReferencesCommand" priority="0x0101" type="Button">
+                <Parent guid="guidVSPackageTemplateCmdReferencesSet" id="MyReferencesMenuGroup" />
+                <Icon guid="guidImages" id="bmpPic1" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>TextChanges</CommandFlag>
+                <Strings>
+                    <CommandName>CmdidReferencesCommand</CommandName>
+                    <MenuText>Turn Off Copy Local</MenuText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidVSPackageTemplateCmdSolutionSet" id ="CmdidSolutionCommand" priority="0x0102" type="Button">
+                <Parent guid="guidVSPackageTemplateCmdSolutionSet" id="MySolutionMenuGroup"/>
+                <Icon guid="guidImages" id="bmpPic1"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DontCache</CommandFlag>
+                <CommandFlag>TextChanges</CommandFlag>
+                <Strings>
+                    <MenuText>Turn Off Copy Local for this Solution</MenuText>
+                    <CommandName>CmdidSolutionCommand</CommandName>
+                </Strings>
+            </Button>
+        </Buttons>
+
+        <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+        <Bitmaps>
+            <!--  The bitmap id is defined in a way that is a little bit different from the others: 
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+            inside a button definition. An important aspect of this declaration is that the element id 
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+            <Bitmap guid="guidImages" href="Resources\Images.png" usedList="bmpPic1"/>
+        </Bitmaps>
+    </Commands>
+
+
+    <Symbols>
+        <!-- This is the package guid. -->
+        <GuidSymbol name="guidVSCopyLocalPkg" value="{5af1aede-b682-4f97-840f-5f602bd82bb4}" />
+
+        <!-- This is the guid used to group the menu commands together -->
+        <GuidSymbol name="guidVSPackageTemplateCmdSet" value="{44fc6acc-72b4-43b9-b720-dc7d4f956b50}">
+
+            <IDSymbol name="MyMenuGroup" value="0x1020" />
+            <IDSymbol name="CmdidProjectCommand" value="0x0100" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidVSPackageTemplateCmdReferencesSet" value="{44fc6acc-72b4-43b9-b720-dc7d4f956b51}">
+            <IDSymbol name="MyReferencesMenuGroup" value="0x601"/>
+            <IDSymbol name="CmdidReferencesCommand" value="0x101"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="guidVSPackageTemplateCmdSolutionSet" value="{44fc6acc-72b4-43b9-b720-dc7d4f956b52}">
+            <IDSymbol name="MySolutionMenuGroup" value="0x602"/>
+            <IDSymbol name="CmdidSolutionCommand" value="0x102"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="guidImages" value="{9fc4d486-da8f-48e1-8615-6c7238516ec8}" >
+            <IDSymbol name="bmpPic1" value="1" />
+        </GuidSymbol>
+    </Symbols>
+
+</CommandTable>
