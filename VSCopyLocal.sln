@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73BF4398-C34F-4BAC-8B65-DB54BE86D14C}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,12 +29,14 @@ Global
 		{AC452D8C-7826-422E-BA44-7B27E6983537}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC452D8C-7826-422E-BA44-7B27E6983537}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F1CA90C-76E5-4CBD-9FB7-A7D0D4FAC794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F1CA90C-76E5-4CBD-9FB7-A7D0D4FAC794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F1CA90C-76E5-4CBD-9FB7-A7D0D4FAC794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F1CA90C-76E5-4CBD-9FB7-A7D0D4FAC794}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2C79430-5D21-46AE-A44E-B1318DDFA174}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = VSCopyLocal.vsmdi

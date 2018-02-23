@@ -1,7 +1,7 @@
 ﻿using EnvDTE;
-using EnvDTE80;
 using System.Collections.Generic;
 using System.Linq;
+using EnvDTE80;
 
 namespace VSUtils.Project
 {
