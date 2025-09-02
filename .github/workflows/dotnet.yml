@@ -8,21 +8,16 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 7.0.x
     - name: Install .NET Framework 4.6 Developer Pack
-      run: |
-        choco install netfx-4.6-devpack -y
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: choco install netfx-4.6-devpack -y
+    - uses: microsoft/setup-msbuild@v1.1
+    - name: Build VSIX Project
+      run: msbuild VSCopyLocal\VSCopyLocal.VSPackage.csproj /p:Configuration=Release
+
+    # [Optional] Run tests only if you have standard .NET test projects
+    # - name: Test
+    #   run: dotnet test --no-build --verbosity normal
