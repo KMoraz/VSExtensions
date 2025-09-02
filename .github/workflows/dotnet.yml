@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -17,8 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 7.0.x
-    - name: Install libssl
-      run: sudo apt-get update && sudo apt-get install -y libssl-dev
+    - name: Install .NET Framework 4.6 Developer Pack
+      run: |
+        choco install netfx-4.6-devpack -y
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
