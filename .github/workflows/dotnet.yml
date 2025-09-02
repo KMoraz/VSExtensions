@@ -16,8 +16,8 @@ jobs:
       run: choco install netfx-4.6-devpack -y
     - uses: microsoft/setup-msbuild@v1.1
     - name: Build VSIX Project
-      run: msbuild VSCopyLocal\VSCopyLocal.VSPackage.csproj /p:Configuration=Release
-
+      run: msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /p:Configuration=Release
+      
     # [Optional] Run tests only if you have standard .NET test projects
     # - name: Test
     #   run: dotnet test --no-build --verbosity normal
