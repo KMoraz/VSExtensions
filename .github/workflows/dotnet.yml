@@ -12,11 +12,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install .NET Framework 4.6 Developer Pack
-      run: choco install netfx-4.6-devpack -y
+    - name: Install dependencies for Visual Studio extension build
+      run: |
+        choco install netfx-4.6-devpack -y && choco install visualstudio2022-workload-vsix -y
     - uses: microsoft/setup-msbuild@v1.3
+    - name: Restore
+      run: msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /t:Restore
     - name: Build VSIX Project
-      run: msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /p:Configuration=Release
+      run: |
+        msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /p:Configuration=Release
       
     # [Optional] Run tests only if you have standard .NET test projects
     # - name: Test
