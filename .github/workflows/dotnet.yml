@@ -14,7 +14,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install dependencies for Visual Studio extension build
       run: |
-        choco install netfx-4.6-devpack -y && choco install visualstudio2022-workload-vsix -y
+        choco install netfx-4.6-devpack -y --pre
+        choco install visualstudio2022-workload-vsix -y --pre
     - uses: microsoft/setup-msbuild@v1.3
     - name: Restore
       run: msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /t:Restore
