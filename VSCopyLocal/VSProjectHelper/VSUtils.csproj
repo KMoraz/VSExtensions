@@ -47,8 +47,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="EnvDTE" Version="latest" />
-    <PackageReference Include="EnvDTE80" Version="latest" />
+    <PackageReference Include="EnvDTE" />
+    <PackageReference Include="EnvDTE80" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
