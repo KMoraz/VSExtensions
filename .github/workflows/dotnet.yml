@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies for Visual Studio extension build
       run: |
         choco install netfx-4.6-devpack -y --pre
-    - uses: microsoft/setup-msbuild@v1.3
+    - uses: microsoft/setup-msbuild@v3.0.0
     - name: Restore
       run: msbuild VSCopyLocal/VSCopyLocal/VSCopyLocal.VSPackage.csproj /t:Restore
     - name: Build VSIX Project
